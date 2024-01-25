@@ -26,7 +26,7 @@ class Quiz {
             const temp = this.questions[i];
             this.questions[i] = this.questions[randomNum];
             this.questions[randomNum] = temp;
-            
+
         }
     }
 
@@ -39,6 +39,25 @@ class Quiz {
             return false;
         } else if (this.currentQuestionIndex === this.questions.length) {
             return true;
-        } 
+        }
     }
+    filterQuestionsByDifficulty(difficulty) {
+        if (difficulty === 1 || difficulty === 2 || difficulty === 3) {
+            const filteredquestions = this.questions.filter((eachQuestion) => {
+                return difficulty === eachQuestion.difficulty
+            })
+            //We have to store it somewhere:
+            this.questions = filteredquestions
+        }
+    }
+    averageDifficulty(){
+        const sumDifficulty = this.questions.reduce((accumulator, currentValue) => {
+
+            return accumulator += currentValue.difficulty
+            
+          }, 0);
+          console.log(sumDifficulty/this.questions.length);
+          return Math.round(sumDifficulty/this.questions.length);
+    }
+    
 }

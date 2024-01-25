@@ -6,6 +6,7 @@ class Question {
         this.difficulty = difficulty;
     }
     shuffleChoices() {
+        //How to shuffle:
         for (let i = this.choices.length - 1; i > 0; i--) {
             const randomNum = Math.floor(Math.random() * (i + 1));
             
@@ -17,10 +18,13 @@ class Question {
 
     }
 }
+/* 
+const question1 = new Question("what color is my shirt?",["red","blue","green"], "red", 1)
+const question1 = new Question("what color is my shirt?",["red","blue","green"], "red", 1)
+const question1 = new Question("what color is my shirt?",["red","blue","green"], "red", 1)
+const question1 = new Question("what color is my shirt?",["red","blue","green"], "red", 1)
+const question1 = new Question("what color is my shirt?",["red","blue","green"], "red", 1)
 
+const arrayOfQuestions = [question1,questio...]
 
-
-
-
-
-    // 2. shuffleChoices()
+const quiz = new Quiz (arrayOfQuestions) */

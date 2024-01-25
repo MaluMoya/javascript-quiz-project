@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /************  QUIZ DATA  ************/
   
-  // Array with the quiz questions
+  // Array with the quiz question1s
   const questions = [
     new Question("What is 2 + 2?", ["3", "4", "5", "6"], "4", 1),
     new Question("What is the capital of France?", ["Miami", "Paris", "Oslo", "Rome"], "Paris", 1),
@@ -75,8 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // showResults() - Displays the end view and the quiz results
 
 
-
+  // Function to show a question
   function showQuestion() {
+
+    
+    // Display the first question
+
+    
     // If the quiz has ended, show the results
     if (quiz.hasEnded()) {
       showResults();
@@ -86,38 +91,55 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clear the previous question text and question choices
     questionContainer.innerText = "";
     choiceContainer.innerHTML = "";
-
+    
     // Get the current question from the quiz by calling the Quiz class method `getQuestion()`
     const question = quiz.getQuestion();
     // Shuffle the choices of the current question by calling the method 'shuffleChoices()' on the question object
     question.shuffleChoices();
     
     
-
+    
     // YOUR CODE HERE:
     //
     // 1. Show the question
     // Update the inner text of the question container element and show the question text
+    questionContainer.innerText = question.text;
 
     
     // 2. Update the green progress bar
     // Update the green progress bar (div#progressBar) width so that it shows the percentage of questions answered
     
-    progressBar.style.width = `65%`; // This value is hardcoded as a placeholder
+    progressBar.style.width = `${( quiz.currentQuestionIndex+1 / (quiz.questions.length))*100}%` // This value is hardcoded as a placeholder
 
 
 
     // 3. Update the question count text 
     // Update the question count (div#questionCount) show the current question out of total questions
     
-    questionCount.innerText = `Question 1 of 10`; //  This value is hardcoded as a placeholder
+    questionCount.innerText = `Question ${quiz.currentQuestionIndex + 1} of ${quiz.questions.length}`; //  This value is hardcoded as a placeholder
 
 
-    
-    // 4. Create and display new radio input element with a label for each choice.
+     // 4. Create and display new radio input element with a label for each choice.
     // Loop through the current question `choices`.
       // For each choice create a new radio input with a label, and append it to the choice container.
       // Each choice should be displayed as a radio input element with a label:
+      const choicesArray = [... question.choices]
+      
+      choicesArray.forEach(function(question) {
+        const radioButton = document.createElement('input');
+        radioButton.type = 'radio';
+        radioButton.name = 'name';
+        radioButton.value = "value";
+      
+        const label = document.createElement('label');
+        label.textContent = question;
+      
+        choiceContainer.appendChild(radioButton);
+        choiceContainer.appendChild(label);
+        choiceContainer.appendChild(document.createElement('br'));
+      
+      });
+
       /* 
           <input type="radio" name="choice" value="CHOICE TEXT HERE">
           <label>CHOICE TEXT HERE</label>
@@ -172,3 +194,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
 });
+

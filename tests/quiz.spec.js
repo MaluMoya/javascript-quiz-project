@@ -239,10 +239,11 @@ describe("Quiz", () => {
   // Once you start working on the tests, change the 'xdescribe' to 'describe' to enable the tests.
   // ****************************************************************************************************
 
-  xdescribe("filterQuestionsByDifficulty() method", () => {   
+  describe("filterQuestionsByDifficulty() method", () => {   
     it("should use the 'filter()' array method on the 'questions' array", () => {
       // Instantiate a new Quiz object
       const quiz = new Quiz([], "test", 60);
+
       // Set up a spy on the 'filter()' array method to track calls to it
       const filterSpy = spyOn(quiz.questions, "filter");
 
@@ -266,30 +267,40 @@ describe("Quiz", () => {
 
 
     it("should be defined", () => {
+      
       // YOUR CODE HERE:
-      //
+      const quiz = new Quiz([], 60, 60);
+      expect(quiz.filterQuestionsByDifficulty).toBeDefined();
       // 1. Instantiate a new Quiz object
-
+   
       // 2. Check if the filterQuestionsByDifficulty() method is defined
-
+      //expect(Quiz.filterQuestionsByDifficulty).toBeDefined();
     });
 
     it("should be a function", () => {
       // YOUR CODE HERE:
       //
       // 1. Instantiate a new Quiz object
-
+      const quiz = new Quiz([], 60, 60);
       // 2. Check if the .filterQuestionsByDifficulty is a function
+      expect(typeof quiz.filterQuestionsByDifficulty).toBe("function");
     });
 
     it("should receive 1 argument (difficulty)", () => {
       // YOUR CODE HERE:
-      //
+      const quiz = new Quiz([], 60, 60);
       // 1. Instantiate a new Quiz object
+      //expect filterQuestionsByDifficulty.toBe(1);
+      expect(quiz.filterQuestionsByDifficulty.length).toEqual(1);
 
       // 2. Check if the filterQuestionsByDifficulty() method takes 1 argument
-
     });
+
+
+
+
+    
+//----------------------------------------------
 
     it("should update the 'questions' array with the questions filtered by difficulty", () => {
       // 1. Read the above test description to understand what this test should do
@@ -325,11 +336,19 @@ describe("Quiz", () => {
       // YOUR CODE HERE:
       //
       // 2. Instantiate a new Quiz object with the test questions
-
+      const quiz = new Quiz(questions, 100, 100);
       // 3. Call the `filterQuestionsByDifficulty()` method with a number between 1 and 3 as a 1st argument.
+      const result = quiz.filterQuestionsByDifficulty(1);
 
       // 4. Check if the questions array has been filtered correctly
+      expect(quiz.averageDifficulty()).toBeEqual()
+
     });
+//---------------------------------------------------------------------------------
+
+
+
+
 
     it("should not change the 'questions' array if the 1st argument is not a number between 1 and 3", () => {
       // 1. Read the above test description to understand what this test should do
@@ -360,11 +379,9 @@ describe("Quiz", () => {
       // YOUR CODE HERE:
       //
       // 2. Instantiate a new Quiz object with the test questions
-
       // 3. Call the `filterQuestionsByDifficulty()` method with a string as a 1st argument (wrong data type).
 
       // 4. Check if the questions array is still the same as the original (it hasn't been filtered)
-
     });
   });
 
@@ -378,7 +395,7 @@ describe("Quiz", () => {
   // Once you start working on the tests, change the 'xdescribe' to 'describe' to enable the tests.
   // ****************************************************************************************************
 
-  xdescribe("averageDifficulty() method", () => {
+  describe("averageDifficulty() method", () => {
     it("should use the 'reduce()' array method on the 'questions' array", () => {
       // Instantiate a new Quiz object
       const quiz = new Quiz([], "test", 60);
@@ -406,29 +423,32 @@ describe("Quiz", () => {
 
     it("should be defined", () => {
       // YOUR CODE HERE:
-      //
+      
+      
       // 1. Instantiate a new Quiz object
-
+      const quiz = new Quiz([], 60, 60);
       // 2. Check if the averageDifficulty() method is defined
-
+      expect(quiz.averageDifficulty).toBeDefined();
     });
 
     it("should be a function", () => {
       // YOUR CODE HERE:
-      //
+      
+      
       // 1. Instantiate a new Quiz object
-
+      const quiz = new Quiz([], 60, 60);
       // 2. Check if the .averageDifficulty is a function
+      expect(typeof quiz.averageDifficulty).toBe("function");
 
     });
 
     it("should receive no arguments", () => {
       // YOUR CODE HERE:
-      //
+      
       // 1. Instantiate a new Quiz object
-
+      const quiz = new Quiz([], 60, 60);
       // 2. Check that the averageDifficulty() method takes no arguments
-
+      expect(quiz.averageDifficulty.length).toEqual(0)
     });
 
     it("should return the average difficulty of the questions in the quiz", () => {
@@ -469,8 +489,18 @@ describe("Quiz", () => {
       // YOUR CODE HERE:
       //
       // 1. Instantiate a new Quiz object with the test questions
-
+      const quiz = new Quiz(questions, 100, 100);
       // 2. Check that the averageDifficulty() method returns the correct average when called
+
+       // Call the `filterQuestionsByDifficulty()` method with a valid difficulty level
+        //const result = quiz.filterQuestionsByDifficulty(2);
+  
+        // Calculate the average difficulty of the original questions array
+        // the avg is 9/5
+        
+        // Check if the result is equal to the calculated average difficulty
+        expect(quiz.averageDifficulty()).toBe(Math.round(9/5))
+
 
     });
   });
