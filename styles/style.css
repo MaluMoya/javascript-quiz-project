@@ -1,10 +1,15 @@
 /* CSS Reset */
+
+/*Universal selector first to keep everything in the middle of the screen*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* If we don't set the hight of body, it will take 
+the hight of the elements that are inside of the body
 
+*/
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4;
@@ -16,7 +21,7 @@ body {
 header {
     padding: 0 20px;
 }
-
+/* */
 .container {
     height: 540px;
     max-width: 600px;
